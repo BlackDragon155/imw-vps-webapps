@@ -48,14 +48,15 @@ fi
 log "Creando carpeta de despliegue en $INSTALL_DIR…"
 mkdir -p "$INSTALL_DIR"
 
-# 4) Copiar archivos PHP de la carpeta actual
+# 4) Copiar archivos PHP de la carpeta donde está el script
 log "Copiando archivos PHP y CSS…"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 for f in "${FILES[@]}"; do
-    if [[ ! -f "$f" ]]; then
+    if [[ ! -f "$SCRIPT_DIR/$f" ]]; then
         echo "[ERROR] Falta el archivo: $f  (debe estar en la misma carpeta que este script)"
         exit 1
     fi
-    cp "$f" "$INSTALL_DIR/"
+    cp "$SCRIPT_DIR/$f" "$INSTALL_DIR/"
 done
 
 # Permisos
@@ -71,7 +72,7 @@ server {
     listen [::]:${APP_PORT};
 
     root ${INSTALL_DIR};
-    index index.php index.html;
+    index index.php;
 
     server_name _;
 

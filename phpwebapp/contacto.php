@@ -36,8 +36,8 @@ $php_version = phpversion();
         <h3>Desarrolladores</h3>
         <div class="info">
             <p><strong>Daniel Gonzalez Velez</strong></p>
-            <p><strong>Javier Alamo</strong></p>
-            <p><strong>Nahuel</strong></p>
+            <p><strong>Jose Fernando González Gil</strong></p>
+            <p><strong>Derek Chocobollo</strong></p>
         </div>
     </div>
 </body>

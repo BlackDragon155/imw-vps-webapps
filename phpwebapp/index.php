@@ -17,7 +17,7 @@ $php_version = phpversion();
 </head>
 <body>
     <h1>Aplicación web dinámica (PHP + Nginx)</h1>
-    <h2>Hecho por: Daniel Gonzalez Velez, Javier Alamo y Nahuel</h2>
+    <h2>Hecho por: Daniel Gonzalez Velez, Jose Gil y Derek Chocobollo</h2>
 
     <div class="section">
         <strong>Nombre del lenguaje de programación:</strong> PHP
