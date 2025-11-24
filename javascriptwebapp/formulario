@@ -1,0 +1,90 @@
+### Formulario 
+
+```html
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <title>Formulario de Contacto</title> 
+  <style> 
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); 
+      color: #fff; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      margin: 0; 
+      flex-direction: column; 
+      text-align: center; 
+    } 
+    .form { 
+      background: rgba(0, 0, 0, 0.4); 
+      padding: 2rem 3rem; 
+      border-radius: 12px; 
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2); 
+      max-width: 400px; 
+    } 
+    input, textarea { 
+      width: 100%; 
+      padding: 10px; 
+      border: none; 
+      border-radius: 5px; 
+      outline: none; 
+      font-size: 1rem; 
+      margin-bottom: 1rem; 
+    } 
+    .submit { 
+      width: 100%; 
+      padding: 10px; 
+      background: #2575fc; 
+      border: none; 
+      border-radius: 5px; 
+      color: #fff; 
+      font-size: 1rem; 
+      cursor: pointer; 
+    } 
+  </style> 
+</head> 
+<body> 
+  <div class="form"> 
+    <h2>Formulario de Contacto</h2> 
+    <form method="POST" action="/submit" id="contactForm"> 
+      <input type="text" name="firstname" placeholder="Nombre" required /> 
+      <input type="text" name="lastname" placeholder="Apellido" required /> 
+      <input type="email" name="email" placeholder="Email" required /> 
+      <textarea name="message" placeholder="Escribe tu mensaje" rows="4" 
+required></textarea> 
+      <button type="submit" class="submit">Enviar</button> 
+    </form> 
+  </div> 
+ 
+  <script> 
+    // Información del cliente que se enviará como campos ocultos 
+    const browser = navigator.userAgent; 
+    const jsVersion = (() => { 
+      try { new Function('() => {}'); return 'ES6+'; } 
+      catch(e) { return 'ES5 o inferior'; } 
+    })(); 
+    const screenResolution = window.screen.width + 'x' + window.screen.height; 
+ 
+    const form = document.getElementById('contactForm'); 
+    form.addEventListener('submit', () => { 
+      [ 
+        { name: 'browser', value: browser }, 
+        { name: 'jsVersion', value: jsVersion }, 
+        { name: 'screenResolution', value: screenResolution } 
+      ].forEach(inputData => { 
+        const input = document.createElement('input'); 
+        input.type = 'hidden'; 
+        input.name = inputData.name; 
+        input.value = inputData.value; 
+        form.appendChild(input); 
+      }); 
+    }); 
+  </script> 
+</body> 
+</html>
+```
